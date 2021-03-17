@@ -15,26 +15,30 @@ public class Application {
         // считываем состояние дома из файла
         SmartHome smartHome = null;
         try {
-            smartHome = new SmartHomeReader().getSmartHome();
+            smartHome = SmartHomeReader.getSmartHome();
         } catch (IOException e) {
             e.printStackTrace();
         }
         // начинаем цикл обработки событий
         if (smartHome != null) {
             SensorEventGetter eventGetter = new SensorEventGetter();
-            SensorEvent event = eventGetter.getNextSensorEvent();
+            SensorEvent event = eventGetter.getNextSensorEvent(smartHome);
+            int ctr = 0;
             while (event != null) {
                 System.out.println("Got event: " + event);
                 if (event.getType() == LIGHT_ON || event.getType() == LIGHT_OFF) {
                     // событие от источника света
-                    new LightActionCommitter(smartHome, event).commitLightAction();
+                    new LightActionCommitter(smartHome, event).commitAction();
                 }
                 if (event.getType() == DOOR_OPEN || event.getType() == DOOR_CLOSED) {
                     // событие от двери
-                    new DoorActionCommitter(smartHome, event).commitDoorAction();
+                    new DoorActionCommitter(smartHome, event).commitAction();
                 }
-
-                event = eventGetter.getNextSensorEvent();
+                ctr++;
+                if (ctr == 10) {
+                    break;
+                }
+                event = eventGetter.getNextSensorEvent(smartHome);
             }
         } else {
             throw new Exception("File is empty or damaged. Can not read.");

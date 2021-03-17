@@ -5,13 +5,12 @@ import ru.sbt.mipt.oop.HouseContainment.Room;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class SmartHome {
-    Collection<Room> rooms;
+public class SmartHome implements GlobalActionCommitter {
+    private final Collection<Room> rooms;
 
     public SmartHome() {
         rooms = new ArrayList<>();
     }
-
 
     public SmartHome(Collection<Room> rooms) {
         this.rooms = rooms;
@@ -23,5 +22,10 @@ public class SmartHome {
 
     public Collection<Room> getRooms() {
         return rooms;
+    }
+
+    @Override
+    public void commitGlobalAction(Action action) {
+
     }
 }

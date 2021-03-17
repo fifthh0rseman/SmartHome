@@ -18,8 +18,8 @@ public class DoorActionCommitter implements ActionCommitter {
         this.event = event;
     }
 
-    public void commitDoorAction() throws Exception {
-        Door door = new DoorFinder(smartHome).findDoorByEvent(event);
+    public void commitAction() throws Exception {
+        Door door = new DoorFinder(smartHome).find(event);
         Room room = new RoomFinder(smartHome).findRoomByDoor(door);
         if (door != null) {
             if (room != null) {
@@ -32,7 +32,7 @@ public class DoorActionCommitter implements ActionCommitter {
                     // если мы получили событие о закрытие двери в холле - это значит, что была закрыта входная дверь.
                     // в этом случае мы хотим автоматически выключить свет во всем доме (это же умный дом!)
                     if (room.getName().equals("hall")) {
-                        new LightActionCommitter(smartHome, event).setAllLightsOff(smartHome);
+                        new HallDoorActionCommitter(smartHome).commitAction();
                     }
                 }
             } else {

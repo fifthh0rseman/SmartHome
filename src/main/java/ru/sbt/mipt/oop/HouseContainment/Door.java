@@ -13,6 +13,10 @@ public class Door {
         return id;
     }
 
+    public boolean isOpen() {
+        return isOpen;
+    }
+
     public void setOpen(boolean open) {
         isOpen = open;
     }

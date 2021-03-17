@@ -1,21 +1,22 @@
 package ru.sbt.mipt.oop.HouseNavigators;
 
-import ru.sbt.mipt.oop.HouseContainment.Light;
+import ru.sbt.mipt.oop.HouseContainment.Door;
 import ru.sbt.mipt.oop.HouseContainment.Room;
 import ru.sbt.mipt.oop.SensorMethods.SensorEvent;
 import ru.sbt.mipt.oop.SmartHome;
 
-public class LightFinder {
+public class DoorFinder implements HomeNavigator {
     private final SmartHome smartHome;
 
-    public LightFinder (SmartHome smartHome) {
+    public DoorFinder (SmartHome smartHome) {
         this.smartHome = smartHome;
     }
-    public Light findLightByEvent(SensorEvent event) {
+
+    public Door find(SensorEvent event) {
         for (Room room : smartHome.getRooms()) {
-            for (Light light : room.getLights()) {
-                if (light.getId().equals(event.getObjectId())) {
-                    return light;
+            for (Door door : room.getDoors()) {
+                if (door.getId().equals(event.getObjectId())) {
+                    return door;
                 }
             }
         }

@@ -5,9 +5,6 @@ import ru.sbt.mipt.oop.HouseContainment.Light;
 import ru.sbt.mipt.oop.HouseContainment.Room;
 import ru.sbt.mipt.oop.HouseNavigators.LightFinder;
 import ru.sbt.mipt.oop.HouseNavigators.RoomFinder;
-import ru.sbt.mipt.oop.SensorMethods.CommandSender;
-import ru.sbt.mipt.oop.SensorMethods.CommandType;
-import ru.sbt.mipt.oop.SensorMethods.SensorCommand;
 import ru.sbt.mipt.oop.SensorMethods.SensorEvent;
 
 import static ru.sbt.mipt.oop.SensorMethods.SensorEventType.LIGHT_ON;
@@ -21,8 +18,8 @@ public class LightActionCommitter implements ActionCommitter {
         this.event = event;
     }
 
-    public void commitLightAction() throws Exception {
-        Light light = new LightFinder(smartHome).findLightByEvent(event);
+    public void commitAction() throws Exception {
+        Light light = new LightFinder(smartHome).find(event);
         Room room = new RoomFinder(smartHome).findRoomByLight(light);
         if (light != null) {
             if (room != null) {
@@ -38,16 +35,6 @@ public class LightActionCommitter implements ActionCommitter {
             }
         } else {
             throw new Exception("Database error! Cannot find the object" + event.getObjectId() + "in your Smart Home.");
-        }
-    }
-
-    public void setAllLightsOff (SmartHome smartHome) {
-        for (Room room : smartHome.getRooms()) {
-            for (Light light : room.getLights()) {
-                light.setOn(false);
-                CommandSender sender = new CommandSender(new SensorCommand(CommandType.LIGHT_OFF, light.getId()));
-                sender.sendCommand();
-            }
         }
     }
 }
