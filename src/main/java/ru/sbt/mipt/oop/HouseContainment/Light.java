@@ -1,6 +1,9 @@
 package ru.sbt.mipt.oop.HouseContainment;
 
-public class Light {
+import ru.sbt.mipt.oop.Action;
+import ru.sbt.mipt.oop.Actionable;
+
+public class Light implements Actionable {
     private final String id;
     private boolean isOn;
 
@@ -20,5 +23,10 @@ public class Light {
 
     public void setOn(boolean on) {
         isOn = on;
+    }
+
+    @Override
+    public void execute(Action action) {
+        action.act(this);
     }
 }

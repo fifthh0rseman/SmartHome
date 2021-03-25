@@ -15,12 +15,10 @@ public class HallDoorActionCommitter implements ActionCommitter {
     }
 
     public void commitAction () {
-        for (Room room : smartHome.getRooms()) {
-            for (Light light : room.getLights()) {
-                light.setOn(false);
-                CommandSender sender = new CommandSender(new SensorCommand(CommandType.LIGHT_OFF, light.getId()));
-                sender.sendCommand();
-            }
-        }
+        smartHome.getRooms().stream().flatMap(room -> room.getLights().stream()).forEach(light -> {
+            light.setOn(false);
+            CommandSender sender = new CommandSender(new SensorCommand(CommandType.LIGHT_OFF, light.getId()));
+            sender.sendCommand();
+        });
     }
 }

@@ -2,6 +2,7 @@ package ru.sbt.mipt.oop;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import ru.sbt.mipt.oop.HouseContainment.Alarm;
 import ru.sbt.mipt.oop.HouseContainment.Door;
 import ru.sbt.mipt.oop.HouseContainment.Light;
 import ru.sbt.mipt.oop.HouseContainment.Room;
@@ -31,7 +32,8 @@ public class HomeBuilder {
         Room hall = new Room(Arrays.asList(new Light("7", false), new Light("8", false), new Light("9", false)),
                 Collections.singletonList(new Door(false, "4")),
                 "hall");
-        SmartHome smartHome = new SmartHome(Arrays.asList(kitchen, bathroom, bedroom, hall));
+        Alarm alarm = new Alarm();
+        SmartHome smartHome = new SmartHome(Arrays.asList(kitchen, bathroom, bedroom, hall), alarm);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonString = gson.toJson(smartHome);
         //System.out.println(jsonString); - не надо выводить в stdout
