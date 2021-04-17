@@ -1,5 +1,6 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.AlarmMethods.Alarm;
 import ru.sbt.mipt.oop.HouseContainment.Room;
 
 import java.util.ArrayList;
@@ -9,12 +10,15 @@ import java.util.function.Consumer;
 
 public class SmartHome implements Actionable {
     private final Collection<Room> rooms;
-
-    public SmartHome() {
-        rooms = new ArrayList<>();
-    }
+    private final Alarm alarm;
 
     public SmartHome(Collection<Room> rooms) {
+        this.alarm = new Alarm();
+        this.rooms = rooms;
+    }
+
+    public SmartHome(Collection<Room> rooms, Alarm alarm) {
+        this.alarm = alarm;
         this.rooms = rooms;
     }
 
@@ -24,6 +28,10 @@ public class SmartHome implements Actionable {
 
     public Collection<Room> getRooms() {
         return rooms;
+    }
+
+    public Alarm getAlarm() {
+        return alarm;
     }
 
     @Override
