@@ -1,5 +1,6 @@
 package ru.sbt.mipt.oop;
 
+import ru.sbt.mipt.oop.CommandSenders.FakeCommandSender;
 import ru.sbt.mipt.oop.EventRunners.TenEventCyclicRunner;
 import ru.sbt.mipt.oop.EventRunners.EventRunner;
 import ru.sbt.mipt.oop.HouseServants.*;
@@ -37,7 +38,7 @@ public class Application {
                         new TheHouseGuardDecorator(Arrays.asList(
                                         new DoorEventHandler(),
                                         new LightEventHandler(),
-                                        new HallDoorEventHandler())
+                                        new HallDoorEventHandler(new FakeCommandSender()))
                         ), new AlarmEventHandler()
                 )
                 )

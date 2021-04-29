@@ -1,7 +1,7 @@
 package ru.sbt.mipt.oop.HouseServants;
 
-import ru.sbt.mipt.oop.MessageSenders.AlertMessageSender;
-import ru.sbt.mipt.oop.MessageSenders.PatrolMessageSender;
+import ru.sbt.mipt.oop.MessageSenders.AlarmMessageSender;
+import ru.sbt.mipt.oop.MessageSenders.MessageSender;
 import ru.sbt.mipt.oop.SensorMethods.SensorEvent;
 import ru.sbt.mipt.oop.SensorMethods.SensorEventType;
 import ru.sbt.mipt.oop.SmartHome;
@@ -10,9 +10,10 @@ import java.util.List;
 public class TheHouseGuardDecorator implements EventHandler {
 
     private final List<EventHandler> eventHandlers;
-
+    private final MessageSender sender;
     public TheHouseGuardDecorator(List<EventHandler> eventHandlers) {
         this.eventHandlers = eventHandlers;
+        this.sender = new AlarmMessageSender();
     }
 
     @Override
@@ -22,7 +23,7 @@ public class TheHouseGuardDecorator implements EventHandler {
         }
 
         if (smartHome.getAlarm().isOnAlertMode()) {
-            new AlertMessageSender().sendMessage();
+            sender.sendMessage("The intruder is still at the house!");
             return;
         }
 
@@ -30,7 +31,7 @@ public class TheHouseGuardDecorator implements EventHandler {
 
         if (smartHome.getAlarm().isOnPatrol()) {
             smartHome.getAlarm().toAlertMode();
-            new PatrolMessageSender().sendMessage();
+            sender.sendMessage("Security breach! Alarm has been triggered!");
         }
     }
 }

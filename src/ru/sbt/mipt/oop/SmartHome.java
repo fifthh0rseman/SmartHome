@@ -51,11 +51,6 @@ public class SmartHome implements Actionable {
     public void execute(ru.sbt.mipt.oop.Action action) {
         action.act(this);
 
-        rooms.forEach(new Consumer<Room>() {
-            @Override
-            public void accept(Room room) {
-                room.execute(action);
-            }
-        });
+        rooms.forEach(room -> room.execute(action));
     }
 }
