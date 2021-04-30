@@ -26,10 +26,6 @@ public class SmartHome implements Actionable {
         rooms.add(room);
     }
 
-    public Collection<Room> getRooms() {
-        return rooms;
-    }
-
     public Alarm getAlarm() {
         return alarm;
     }

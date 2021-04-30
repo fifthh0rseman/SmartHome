@@ -13,7 +13,6 @@ import static ru.sbt.mipt.oop.SensorMethods.SensorEventType.*;
 public class SensorEventGetterRandom implements SensorEventGetter {
 
     public SensorEvent getNextSensorEvent(SmartHome smartHome) {
-        //ArrayList<Room> rooms = (ArrayList<Room>) smartHome.getRooms();
         ArrayList<Light> lights = new ArrayList<>();
         ArrayList<String> doorsIDs = new ArrayList<>();
         smartHome.execute(doorCandidate -> {
