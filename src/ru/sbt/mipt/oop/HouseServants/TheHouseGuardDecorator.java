@@ -11,6 +11,7 @@ public class TheHouseGuardDecorator implements EventHandler {
 
     private final List<EventHandler> eventHandlers;
     private final MessageSender sender;
+
     public TheHouseGuardDecorator(List<EventHandler> eventHandlers) {
         this.eventHandlers = eventHandlers;
         this.sender = new AlarmMessageSender();
