@@ -3,6 +3,7 @@ package HouseServantsTest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import ru.sbt.mipt.oop.CommandSenders.FakeCommandSender;
 import ru.sbt.mipt.oop.HouseContainment.Door;
 import ru.sbt.mipt.oop.HouseContainment.Light;
 import ru.sbt.mipt.oop.HouseContainment.Room;
@@ -64,7 +65,7 @@ public class HallDoorEventHandlerTest {
         SmartHome expected = new SmartHome(Arrays.asList(
                 corridor, restroom, restroomBalcony, kitchenBalcony, kitchen, childrenRoom));
 
-        new HallDoorEventHandler().handleEvent(smartHome, hallDoorEvent);
+        new HallDoorEventHandler(new FakeCommandSender()).handleEvent(smartHome, hallDoorEvent);
         Assert.assertEquals(smartHome, expected);
     }
 
@@ -92,7 +93,7 @@ public class HallDoorEventHandlerTest {
                 "Kitchen Balcony");
         SmartHome expected = new SmartHome(Arrays.asList(
                 corridor, restroom, restroomBalcony, kitchenBalcony, kitchen, childrenRoom));
-        new HallDoorEventHandler().handleEvent(smartHome, notHallDoorEvent);
+        new HallDoorEventHandler(new FakeCommandSender()).handleEvent(smartHome, notHallDoorEvent);
         Assert.assertEquals(smartHome, expected);
     }
 }
