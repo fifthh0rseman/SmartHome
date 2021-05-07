@@ -4,13 +4,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
-import ru.sbt.mipt.oop.Action;
 import ru.sbt.mipt.oop.ExternalSources.rc.RemoteControl;
 import ru.sbt.mipt.oop.HouseContainment.Door;
-import ru.sbt.mipt.oop.HouseContainment.Room;
 import ru.sbt.mipt.oop.SmartHome;
-
-import static org.junit.Assert.*;
 
 public class HallDoorCloseCommandTest {
     private static final AbstractApplicationContext context
