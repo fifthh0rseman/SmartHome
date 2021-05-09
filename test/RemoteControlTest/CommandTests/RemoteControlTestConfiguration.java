@@ -1,4 +1,4 @@
-package RemoteControlTest;
+package RemoteControlTest.CommandTests;
 
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,20 +25,13 @@ public class RemoteControlTestConfiguration {
     @Autowired
     RemoteControlImpl remoteControl(SmartHome smartHome) {
         RemoteControlBuilder<RemoteControlImpl> builder = new RemoteControlImplBuilder();
-
-        builder.setRcId("Hall Controller");
+        builder.setRcId("Test Controller");
         builder.bindButton("A", new TurnHallLightOnCommand(smartHome));
         builder.bindButton("B", new HallDoorCloseCommand(smartHome));
-        builder.buildRemoteControl();
-
-        builder.setRcId("Light Controller");
-        builder.bindButton("A", new TurnAllLightsOnCommand(smartHome));
-        builder.bindButton("B", new TurnAllLightsOffCommand(smartHome));
-        builder.buildRemoteControl();
-
-        builder.setRcId("Alarm Controller");
-        builder.bindButton("A", new AlarmToAlertModeCommand(smartHome));
-        builder.bindButton("B", new AlarmActivateCommand(smartHome, "4555"));
+        builder.bindButton("C", new TurnAllLightsOnCommand(smartHome));
+        builder.bindButton("D", new TurnAllLightsOffCommand(smartHome));
+        builder.bindButton("1", new AlarmToAlertModeCommand(smartHome));
+        builder.bindButton("2", new AlarmActivateCommand(smartHome, "4555"));
         return builder.buildRemoteControl();
     }
 }

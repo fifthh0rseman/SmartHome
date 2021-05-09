@@ -4,10 +4,10 @@ import ru.sbt.mipt.oop.RemoteControllers.Commands.Command;
 import ru.sbt.mipt.oop.RemoteControllers.RemoteControlImpl;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class RemoteControlImplBuilder implements RemoteControlBuilder<RemoteControlImpl>{
-    private HashMap<String, Command> buttonCodeToCommand;
-    private RemoteControlImpl prevRemoteControl;
+    private Map<String, Command> buttonCodeToCommand;
     private String rcId; //remote control ID
 
     public RemoteControlImplBuilder() {
@@ -31,8 +31,8 @@ public class RemoteControlImplBuilder implements RemoteControlBuilder<RemoteCont
 
     @Override
     public RemoteControlImpl buildRemoteControl() {
-        prevRemoteControl = new RemoteControlImpl(rcId, prevRemoteControl, buttonCodeToCommand);
+        RemoteControlImpl remoteControl = new RemoteControlImpl(rcId, buttonCodeToCommand);
         this.reset();
-        return prevRemoteControl;
+        return remoteControl;
     }
 }
