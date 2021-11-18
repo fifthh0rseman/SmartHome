@@ -26,7 +26,11 @@
         dest: SmartHome.json
         remote_src: no
     - name: PWD
-      pwd:
+      shell: "pwd"
+      register: mypwd
+
+    - name: print PWD
+      debug: var=mypwd
 
     - name: Запуск JAR
       shell: java -jar SmartHome.jar
