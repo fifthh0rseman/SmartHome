@@ -28,6 +28,9 @@
 
     - name: LS in dir
       shell: "cd ../src/ru/sbt/mipt/oop & ls"
+      register: myls
+    - name: print myls
+      debug: myls
 
     - name: Запуск JAR
       shell: java -jar SmartHome.jar
