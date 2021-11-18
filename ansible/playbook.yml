@@ -16,13 +16,13 @@
 
     - name: Copy Jar to server
       copy:
-        src: ../target/SmartHome-1.0-SNAPSHOT-jar-with-dependencies.jar
+        src: target/SmartHome-1.0-SNAPSHOT-jar-with-dependencies.jar
         dest: smart-home.jar
         remote_src: no
 
     - name: Copy json configuration to server
       copy:
-        src: ../src/SmartHome.json
+        src: src/SmartHome.json
         dest: SmartHome.json
         remote_src: no
 
