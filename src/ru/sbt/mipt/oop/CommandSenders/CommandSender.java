@@ -1,5 +1,5 @@
 package ru.sbt.mipt.oop.CommandSenders;
 
 public interface CommandSender {
-    void sendCommand();
+    void sendCommand(SensorCommand command);
 }

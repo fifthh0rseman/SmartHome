@@ -12,6 +12,10 @@ public class Alarm {
         this.code = "";
     }
 
+    public boolean isDeactivated() {
+        return state instanceof DeactivatedAlarmState;
+    }
+
     public boolean isOnPatrol() {
         return !(state instanceof DeactivatedAlarmState);
     }

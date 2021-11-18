@@ -49,5 +49,6 @@
         {"id":  "D5", "isOpen": false}
       ],
       "name": "Kitchen balcony"}
-  ]
+  ],
+  "alarm": {"alarmState": "DeactivatedAlarmState", "code":  ""}
 }
