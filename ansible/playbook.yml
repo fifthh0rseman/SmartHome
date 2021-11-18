@@ -22,7 +22,7 @@
 
     - name: Copy json configuration to server
       copy:
-        src: ../src/SmartHome.json
+        src: ../src/ru/sbt/mipt/oop/SmartHome.json
         dest: SmartHome.json
         remote_src: no
 
