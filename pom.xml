@@ -38,7 +38,9 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ru.sbt.mipt.oop.Application</mainClass>
+                            <mainClass>
+                                src.ru.sbt.mipt.oop.Application
+                            </mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
