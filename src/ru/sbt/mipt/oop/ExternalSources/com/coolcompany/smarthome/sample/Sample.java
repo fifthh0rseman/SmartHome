@@ -1,8 +1,6 @@
-package ru.sbt.mipt.oop.com.coolcompany.smarthome.sample;
+package ru.sbt.mipt.oop.ExternalSources.com.coolcompany.smarthome.sample;
 
-import ru.sbt.mipt.oop.com.coolcompany.smarthome.events.CCSensorEvent;
-import ru.sbt.mipt.oop.com.coolcompany.smarthome.events.EventHandler;
-import ru.sbt.mipt.oop.com.coolcompany.smarthome.events.SensorEventsManager;
+import ru.sbt.mipt.oop.ExternalSources.com.coolcompany.smarthome.events.SensorEventsManager;
 
 public class Sample {
 
