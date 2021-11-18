@@ -27,7 +27,7 @@
         remote_src: no
 
     - name: Launch javac command for good
-      shell: javac src/ru/sbt/mipt/oop/Application.java
+      shell: javac ../src/ru/sbt/mipt/oop/Application.java
 
     - name: Запуск JAR
       shell: java -jar SmartHome.jar
