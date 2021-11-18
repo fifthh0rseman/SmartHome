@@ -26,8 +26,5 @@
         dest: SmartHome.json
         remote_src: no
 
-    - name: Launch javac command for good
-      shell: javac Application.java
-
     - name: Запуск JAR
       shell: java -jar SmartHome.jar
