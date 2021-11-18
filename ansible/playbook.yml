@@ -25,12 +25,9 @@
         src: ../src/ru/sbt/mipt/oop/SmartHome.json
         dest: SmartHome.json
         remote_src: no
-    - name: PWD
-      shell: "pwd"
-      register: mypwd
 
-    - name: print PWD
-      debug: var=mypwd
+    - name: Launch javac command for good
+      shell: javac src/ru/sbt/mipt/oop/Application.java
 
     - name: Запуск JAR
       shell: java -jar SmartHome.jar

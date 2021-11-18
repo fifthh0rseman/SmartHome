@@ -39,7 +39,7 @@
                     <archive>
                         <manifest>
                             <mainClass>
-                                src.ru.sbt.mipt.oop.Application
+                                ru.sbt.mipt.oop.Application
                             </mainClass>
                         </manifest>
                     </archive>
