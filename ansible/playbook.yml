@@ -4,13 +4,13 @@
   tasks:
     - name: Install JDK 17 on CentOS
       yum:
-        name: java-17-openjdk-devel
+        name: java-11-openjdk-devel
         state: latest
       when: ansible_os_family == "RedHat"
 
-    - name: Install JDK 17 on Debian
+    - name: Install JDK 11 on Debian
       apt:
-        name: openjdk-17-jdk
+        name: openjdk-11-jdk
         state: latest
       when: ansible_os_family == "Debian"
 
