@@ -26,11 +26,5 @@
         dest: SmartHome.json
         remote_src: no
 
-    - name: LS in dir
-      shell: "cd ../src/ru/sbt/mipt/oop & ls"
-      register: myls
-    - name: print myls
-      debug: var=myls
-
     - name: Запуск JAR
       shell: java -jar SmartHome.jar
